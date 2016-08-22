@@ -9,8 +9,7 @@ engines:
       - javascript
 ratings:
   paths:
-  - lib/**
-  - "**.js"
+  - lib/**/*.js
 exclude_paths:
   - tests/**/*.js 
   - main.js
