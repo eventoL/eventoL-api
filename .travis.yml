@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - 0.12
+  - 4
+  - 5
+  - 6
+  - node
+before_script:
+  - npm install
+env:
+  - NODE_ENV=develop
+  - LOGGER_INFO_PATH=/var/log/eventoLInfo.log
+  - LOGGER_ERROR_PATH=/var/log/eventoLError.log
+script: sh unit.sh
