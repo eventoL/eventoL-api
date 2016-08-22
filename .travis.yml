@@ -15,4 +15,4 @@ env:
 script: sh unit.sh
 addons:
   code_climate:
-    repo_token: 57bb0fc3f32fdc13a2004e7c
+    repo_token: 2d2a553e2257b5c9c86fc927b3e413c3ebc5277ce833933e61b62642b3925f59
