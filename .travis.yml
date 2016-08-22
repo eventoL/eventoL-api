@@ -15,7 +15,7 @@ env:
     - NODE_ENV=develop
 script: sh unit.sh
 after_script:
-  - codeclimate-test-reporter < lcov.info
+  - codeclimate-test-reporter < results/lcov.info
 addons:
   code_climate:
     repo_token: 2d2a553e2257b5c9c86fc927b3e413c3ebc5277ce833933e61b62642b3925f59
