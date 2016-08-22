@@ -1,6 +1,5 @@
 language: node_js
 node_js:
-  - 0.12
   - 4
   - 5
   - 6
@@ -8,10 +7,9 @@ node_js:
 before_script:
   - npm install
 env:
-  develop:
-    - NODE_ENV=develop
-  production:
-    - NODE_ENV=production
+  global:
     - LOGGER_INFO_PATH=/var/log/eventoLInfo.log
     - LOGGER_ERROR_PATH=/var/log/eventoLError.log
+  - NODE_ENV=develop
+  - NODE_ENV=production
 script: sh unit.sh
