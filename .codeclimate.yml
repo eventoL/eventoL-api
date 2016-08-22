@@ -13,3 +13,4 @@ ratings:
 exclude_paths:
   - tests/**/*.js 
   - main.js
+  - Gruntfile.js
