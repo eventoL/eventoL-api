@@ -12,5 +12,7 @@ env:
     - LOGGER_ERROR_PATH=/var/log/eventoLError.log
   matrix:
     - NODE_ENV=develop
-    - NODE_ENV=production
 script: sh unit.sh
+addons:
+  code_climate:
+    repo_token: 57bb0fc3f32fdc13a2004e7c
