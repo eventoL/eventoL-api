@@ -10,6 +10,7 @@ env:
   global:
     - LOGGER_INFO_PATH=/var/log/eventoLInfo.log
     - LOGGER_ERROR_PATH=/var/log/eventoLError.log
-  - NODE_ENV=develop
-  - NODE_ENV=production
+  matrix:
+    - NODE_ENV=develop
+    - NODE_ENV=production
 script: sh unit.sh
