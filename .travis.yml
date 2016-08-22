@@ -8,7 +8,10 @@ node_js:
 before_script:
   - npm install
 env:
-  - NODE_ENV=develop
-  - LOGGER_INFO_PATH=/var/log/eventoLInfo.log
-  - LOGGER_ERROR_PATH=/var/log/eventoLError.log
+  develop:
+    - NODE_ENV=develop
+  production:
+    - NODE_ENV=production
+    - LOGGER_INFO_PATH=/var/log/eventoLInfo.log
+    - LOGGER_ERROR_PATH=/var/log/eventoLError.log
 script: sh unit.sh
