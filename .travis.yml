@@ -6,6 +6,7 @@ node_js:
   - node
 before_script:
   - npm install
+  - npm install -g codeclimate-test-reporter
 env:
   global:
     - LOGGER_INFO_PATH=/var/log/eventoLInfo.log
@@ -13,6 +14,8 @@ env:
   matrix:
     - NODE_ENV=develop
 script: sh unit.sh
+after_script:
+  - codeclimate-test-reporter < lcov.info
 addons:
   code_climate:
     repo_token: 2d2a553e2257b5c9c86fc927b3e413c3ebc5277ce833933e61b62642b3925f59
