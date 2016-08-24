@@ -1,3 +1,5 @@
+'use strict';
+
 const logger = require('./lib/logger');
 const api = require('./lib/model/api');
 
@@ -29,13 +31,13 @@ let event = {
     location: [-58.381559, -34.603684]
 };
 
-generateModel(api.model.Tag, [{name: 'flisol'}, {name: 'software libre'}], (id) => event.tags.push(id));
-generateModel(api.model.Category, [{name: 'linux'}], (id) => event.categories.push(id));
-generateModel(api.model.User, [{
+generateModel(api.model.models.Tag, [{name: 'flisol'}, {name: 'software libre'}], (id) => event.tags.push(id));
+generateModel(api.model.models.Category, [{name: 'linux'}], (id) => event.categories.push(id));
+generateModel(api.model.models.User, [{
     first_name: 'pepe',
     last_name: 'gomez',
     username: 'pgomez'
 }], (id) => {
     event.owner = id;
 });
-setTimeout(() => generateModel(api.model.Event, [event]), 3000);
+setTimeout(() => generateModel(api.model.models.Event, [event]), 3000);
