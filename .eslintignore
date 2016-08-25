@@ -1,2 +1,3 @@
 **/*{.,-}min.js
 Gruntfile.js
+tests/**/*.js
