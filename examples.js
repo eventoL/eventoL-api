@@ -2,6 +2,7 @@
 
 const logger = require('./lib/logger');
 const api = require('./lib/model/api');
+api.load();
 
 function generateModel(model, docs, callback){
     docs.forEach((doc) => {

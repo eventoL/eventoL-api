@@ -3,8 +3,9 @@
 require('dotenv').load();
 const logger = require('./lib/logger');
 const express = require('express');
-const api = require('./lib/model/api');
 const Q = require('q');
+const api = require('./lib/model/api');
+api.load();
 
 // Create the app and listen for API requests
 let app = express();
