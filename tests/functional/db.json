@@ -1,0 +1,32 @@
+{
+    "events": [
+        {
+            "title": "flisol",
+            "description": "lkasjdlaskjlaskjlaskjlkasjlaskjdaslkj laksdj lksa jlkas nlkn a",
+            "owner": "",
+            "tags": [],
+            "categories": [],
+            "location": [-58.381559, -34.603684]
+        },
+        {
+            "title": "cafeconf",
+            "description": "super",
+            "owner": "",
+            "tags": [],
+            "categories": [],
+            "location": [-60.381559, -30.603684]
+        }
+    ],
+    "users": [
+        {"first_name": "pepe", "last_name": "gomez", "username": "pgomez"},
+        {"first_name": "juan", "last_name": "perez", "username": "jperez"}
+    ],
+    "tags": [
+        {"name": "flisol"},
+        {"name": "software libre"}
+    ],
+    "categories": [
+        {"name": "linux"},
+        {"name": "cafeconf"}
+    ]
+}

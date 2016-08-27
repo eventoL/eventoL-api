@@ -12,7 +12,7 @@ describe('Logger', () => {
 
     beforeEach(() => {
       dotenvStub.load = () => {process.env.NODE_ENV='develop'};
-      logger = proxyquire('../../lib/logger', {'dotenv': dotenvStub});
+      logger = proxyquire('../../../lib/logger', {'dotenv': dotenvStub});
     });
 
     it('should be a instance of winston.Logger', () => {
@@ -37,7 +37,7 @@ describe('Logger', () => {
         process.env.LOGGER_INFO_PATH='/var/log/Info.log';
         process.env.LOGGER_ERROR_PATH='/var/log/Error.log'
       };
-      logger = proxyquire('../../lib/logger', {'dotenv': dotenvStub});
+      logger = proxyquire('../../../lib/logger', {'dotenv': dotenvStub});
     });
 
     it('should be a instance of winston.Logger', () => {

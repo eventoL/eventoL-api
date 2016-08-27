@@ -22,6 +22,24 @@ module.exports = function(grunt) {
           clearRequireCache: false
         },
         src: ['./tests/**/*.js']
+      },
+      unit: {
+        options: {
+          reporter: 'spec',
+          captureFile: 'results/results.txt',
+          quiet: false,
+          clearRequireCache: false
+        },
+        src: ['./tests/unit/**/*.js']
+      },
+      functional: {
+        options: {
+          reporter: 'spec',
+          captureFile: 'results/results.txt',
+          quiet: false,
+          clearRequireCache: false
+        },
+        src: ['./tests/functional/**/*.js']
       }
     },
 
@@ -57,24 +75,59 @@ module.exports = function(grunt) {
       }
     },
 
-    mocha_istanbul:{
-      src: "tests/**/*.js",
-      options: {
-        coverage: true,
-        excludes: ['node_modules/**', 'tests/**', 'results/**', 'main.js'],
-        istanbulOptions: ['--include-all-sources=true'],
-        root: './lib',
-        coverageFolder: 'results',
-        reporter: 'xunit-file',
-        reportFormats: ['cobertura','lcovonly', 'html'],
-        quiet: false
+    mocha_istanbul: {
+      test: {
+        src: "tests/**/*.js",
+        options: {
+          coverage: true,
+          excludes: ['node_modules/**', 'tests/**', 'results/**', 'main.js'],
+          istanbulOptions: ['--include-all-sources=true'],
+          root: './lib',
+          coverageFolder: 'results',
+          reporter: 'xunit-file',
+          reportFormats: ['cobertura','lcovonly', 'html'],
+          quiet: false
+        }
+      },
+      unit: {
+        src: "tests/unit/**/*.js",
+        options: {
+          coverage: true,
+          excludes: ['node_modules/**', 'tests/**', 'results/**', 'main.js'],
+          istanbulOptions: ['--include-all-sources=true'],
+          root: './lib',
+          coverageFolder: 'results',
+          reporter: 'xunit-file',
+          reportFormats: ['cobertura','lcovonly', 'html'],
+          quiet: false
+        }
+      },
+      functional: {
+        unit: {
+          src: "tests/functional/**/*.js",
+          options: {
+            coverage: true,
+            excludes: ['node_modules/**', 'tests/**', 'results/**', 'main.js'],
+            istanbulOptions: ['--include-all-sources=true'],
+            root: './lib',
+            coverageFolder: 'results',
+            reporter: 'xunit-file',
+            reportFormats: ['cobertura', 'lcovonly', 'html'],
+            quiet: false
+          }
+        }
       }
     }
-
   });
 
   grunt.registerTask('test', [
-    'env:dev', 'eslint:jenkins', 'mocha_istanbul'
+    'env:dev', 'eslint:jenkins', 'mocha_istanbul:test'
+  ]);
+  grunt.registerTask('unittest', [
+    'env:dev', 'eslint:jenkins', 'mocha_istanbul:unit'
+  ]);
+  grunt.registerTask('functionaltest', [
+    'env:dev', 'eslint:jenkins', 'mocha_istanbul:functional'
   ]);
 
 };
