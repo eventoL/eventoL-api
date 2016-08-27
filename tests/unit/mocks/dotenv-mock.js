@@ -15,5 +15,6 @@ module.exports = {
     process.env.MONGO_HOST = 'localhost';
     process.env.MONGO_PORT = '27017';
     process.env.MONGO_DBNAME = 'eventoL';
+    process.env.API_URL = 'http://localhost:3000';
   }
 };

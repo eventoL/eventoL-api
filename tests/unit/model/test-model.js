@@ -10,7 +10,7 @@ describe('Model', () => {
     let model;
 
     beforeEach(() => {
-        model = proxyquire('../../lib/model/model', {
+        model = proxyquire('../../../lib/model/model', {
             'q': qStub,
             'dotenv': dotenvStub,
             'mongoose': mongooseStub

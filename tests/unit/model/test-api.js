@@ -39,7 +39,7 @@ describe('Api', () => {
                 }
             }
         };
-        api = proxyquire('../../lib/model/api', {
+        api = proxyquire('../../../lib/model/api', {
             'baucis': baucisStub,
             'dotenv': dotenvStub,
             './model': {models: {Event: model}}
