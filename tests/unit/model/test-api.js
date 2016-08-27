@@ -18,16 +18,22 @@ describe('Api', () => {
                 skip: sinon.stub().returns({
                     limit: sinon.stub().returns({
                         populate: sinon.stub().returns({
-                            exec: sinon.stub().returns(Q([{name: 'pepe'}]))
+                            populate: sinon.stub().returns({
+                                exec: sinon.stub().returns(Q([{name: 'pepe'}]))
+                            })
                         })
                     })
                 })
             }),
             modelName: 'name',
             schema: {
+                post: sinon.spy(),
                 tree: {
                     title: {
-                        relationship: true
+                        populate: true
+                    },
+                    name: {
+                        populate: false
                     },
                     description: {}
                 }
@@ -90,7 +96,7 @@ describe('Api', () => {
 
         it('should called exec', () => {
             api.execQuery(model, {name: 'pepe'});
-            model.find().skip().limit().populate().exec.called.should.be.true();
+            model.find().skip().limit().populate().populate().exec.called.should.be.true();
         });
 
         it('should called populate', () => {
@@ -98,9 +104,14 @@ describe('Api', () => {
             model.find().skip().limit().populate.called.should.be.true();
         });
 
-        it('should called populate with correct params', () => {
+        it('should called populate with correct params when populate is true', () => {
             api.execQuery(model, {name: 'pepe'});
-            model.find().skip().limit().populate.calledWithExactly(['title']).should.be.true();
+            model.find().skip().limit().populate.calledWithExactly('title').should.be.true();
+        });
+
+        it('should called populate with correct params when populate is false', () => {
+            api.execQuery(model, {name: 'pepe'});
+            model.find().skip().limit().populate().populate.calledWithExactly('name', 'url').should.be.true();
         });
 
         it('should called limit', () => {
@@ -179,6 +190,7 @@ describe('Api', () => {
         });
 
         it('should change limit', () => {
+
             let page = 2;
             let limit = 5;
             return api.getEventForRelationship(model, 'name', {name: 'pepe'}, page, limit)
