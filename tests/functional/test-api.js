@@ -13,7 +13,8 @@ function testRequest(url) {
 describe('Api', () => {
     let apiUrl = process.env.API_URL;
 
-    before(() => {
+    before( function() {
+        this.timeout(5000);
         //load example to db
         let db = require('./load-db');
         let main = require('../../main');
@@ -24,31 +25,31 @@ describe('Api', () => {
 
     describe('baucis get elements', () => {
 
-        it('should be return 2 events in /api/events', () => {
+        it('should be return 17 events in /api/events', () => {
             let url = `${apiUrl}/api/events/`;
             return testRequest(url).then((response) => {
-                JSON.parse(response.body).length.should.be.equal(2);
+                JSON.parse(response.body).length.should.be.equal(17);
             });
         });
 
-        it('should be return 2 categories in /api/categories', () => {
+        it('should be return 4 categories in /api/categories', () => {
             let url = `${apiUrl}/api/categories/`;
             return testRequest(url).then((response) => {
-                JSON.parse(response.body).length.should.be.equal(2);
+                JSON.parse(response.body).length.should.be.equal(4);
             });
         });
 
-        it('should be return 2 tags in /api/tags', () => {
+        it('should be return 4 tags in /api/tags', () => {
             let url = `${apiUrl}/api/tags/`;
             return testRequest(url).then((response) => {
-                JSON.parse(response.body).length.should.be.equal(2);
+                JSON.parse(response.body).length.should.be.equal(4);
             });
         });
 
-        it('should be return 2 users in /api/users', () => {
+        it('should be return 6 users in /api/users', () => {
             let url = `${apiUrl}/api/users/`;
             return testRequest(url).then((response) => {
-                JSON.parse(response.body).length.should.be.equal(2);
+                JSON.parse(response.body).length.should.be.equal(6);
             });
         });
 
@@ -96,46 +97,44 @@ describe('Api', () => {
             });
         });
 
-        it('should return event flisol by category when search linux', () => {
+        it('should return events flisol and cafeconf by category when search linux', () => {
             let text = 'linux';
             let url = `${apiUrl}/api/events/search/${text}/`;
             return testRequest(url).then((response) => {
                 let body = JSON.parse(response.body);
-                body.categories.results.length.should.be.equal(1);
-                body.categories.results[0].title.should.be.equal('flisol');
+                body.categories.results.length.should.be.equal(2);
             });
         });
 
-        it('should return event flisol by category when search nux', () => {
+        it('should return events flisol and cafeconf by category when search nux', () => {
             let text = 'nux';
             let url = `${apiUrl}/api/events/search/${text}/`;
             return testRequest(url).then((response) => {
                 let body = JSON.parse(response.body);
-                body.categories.results.length.should.be.equal(1);
-                body.categories.results[0].title.should.be.equal('flisol');
+                body.categories.results.length.should.be.equal(2);
             });
         });
 
-        it('should return event flisol and event cafeconf by tag when search flisol', () => {
+        it('should return event flisol by tag when search flisol', () => {
             let text = 'software';
             let url = `${apiUrl}/api/events/search/${text}/`;
             return testRequest(url).then((response) => {
                 let body = JSON.parse(response.body);
-                body.tags.results.length.should.be.equal(2);
+                body.tags.results.length.should.be.equal(1);
             });
         });
 
-        it('should return event flisol and event cafeconf by tag when search soft', () => {
+        it('should return event cafeconf by tag when search soft', () => {
             let text = 'soft';
             let url = `${apiUrl}/api/events/search/${text}/`;
             return testRequest(url).then((response) => {
                 let body = JSON.parse(response.body);
-                body.tags.results.length.should.be.equal(2);
+                body.tags.results.length.should.be.equal(1);
             });
         });
 
         it('should return only event flisol by tag when search soft with limit=1', () => {
-            let text = 'software';
+            let text = 'flisol';
             let url = `${apiUrl}/api/events/search/${text}/?limit=1`;
             return testRequest(url).then((response) => {
                 let body = JSON.parse(response.body);
@@ -144,13 +143,13 @@ describe('Api', () => {
             });
         });
 
-        it('should return only event cafeconf by tag when search soft with limit=1 and page=2', () => {
-            let text = 'software';
-            let url = `${apiUrl}/api/events/search/${text}/?limit=1&page=2`;
+        it('should return only event cafeconf by category when search soft with limit=1 and page=1', () => {
+            let text = 'cafeconf';
+            let url = `${apiUrl}/api/events/search/${text}/?limit=1&page=1`;
             return testRequest(url).then((response) => {
                 let body = JSON.parse(response.body);
-                body.tags.results.length.should.be.equal(1);
-                body.tags.results[0].title.should.be.equal('cafeconf');
+                body.categories.results.length.should.be.equal(1);
+                body.categories.results[0].title.should.be.equal('cafeconf');
             });
         });
 
@@ -215,22 +214,19 @@ describe('Api', () => {
         let distance = 184100;
         let distance2 = 484100;
 
-        it('should return event flisol when distance param is correct', () => {
+        it('should return events when distance param is correct', () => {
             let url = `${urlWithLatAndLong}?distance=${distance}`;
             return testRequest(url).then((response) => {
                 let body = JSON.parse(response.body);
-                body.results.length.should.be.equal(1);
-                body.results[0].title.should.be.equal('flisol');
+                body.results.length.should.be.equal(10);
             });
         });
 
-        it('should return event flisol and event cafeconf when distance param is correct', () => {
+        it('should return events when distance param is correct', () => {
             let url = `${urlWithLatAndLong}?distance=${distance2}`;
             return testRequest(url).then((response) => {
                 let body = JSON.parse(response.body);
-                body.results.length.should.be.equal(2);
-                body.results[0].title.should.be.equal('flisol');
-                body.results[1].title.should.be.equal('cafeconf');
+                body.results.length.should.be.equal(10);
             });
         });
 
@@ -241,21 +237,19 @@ describe('Api', () => {
             });
         });
 
-        it('should return only event flisol when distance param is correct and limit=1', () => {
+        it('should return event when distance param is correct and limit=1', () => {
             let url = `${urlWithLatAndLong}?distance=${distance2}&limit=1`;
             return testRequest(url).then((response) => {
                 let body = JSON.parse(response.body);
                 body.results.length.should.be.equal(1);
-                body.results[0].title.should.be.equal('flisol');
             });
         });
 
-        it('should return only event flisol when distance param is correct and limit=1 and page=2', () => {
+        it('should return other event when distance param is correct and limit=1 and page=2', () => {
             let url = `${urlWithLatAndLong}?distance=${distance2}&limit=1&page=2`;
             return testRequest(url).then((response) => {
                 let body = JSON.parse(response.body);
                 body.results.length.should.be.equal(1);
-                body.results[0].title.should.be.equal('cafeconf');
             });
         });
 
