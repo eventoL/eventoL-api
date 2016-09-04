@@ -3,30 +3,203 @@
         {
             "title": "flisol",
             "description": "lkasjdlaskjlaskjlaskjlkasjlaskjdaslkj laksdj lksa jlkas nlkn a",
-            "owner": "",
-            "tags": [],
-            "categories": [],
+            "owner": "pgomez",
+            "tags": ["flisol"],
+            "categories": ["linux"],
             "location": [-58.381559, -34.603684]
         },
         {
             "title": "cafeconf",
             "description": "super",
-            "owner": "",
-            "tags": [],
-            "categories": [],
+            "owner": "pgomez",
+            "tags": ["software libre"],
+            "categories": ["cafeconf", "linux"],
             "location": [-60.381559, -30.603684]
+        },
+        {
+            "title": "event 1",
+            "description": "super event 1",
+            "owner": "pgomez",
+            "tags": ["test", "event"],
+            "categories": ["example", "event test"],
+            "location": [
+                -58.41277331041715,
+                -34.6355297139611
+            ]
+        },
+        {
+            "title": "event 2",
+            "description": "super event 2",
+            "owner": "pgomez",
+            "tags": ["test", "event"],
+            "categories": ["example", "event test"],
+            "location": [
+                -58.41321855711362,
+                -34.63579012526116
+            ]
+        },
+        {
+            "title": "event 3",
+            "description": "super event 3",
+            "owner": "pgomez",
+            "tags": ["test", "event"],
+            "categories": ["example", "event test"],
+            "location": [
+                -58.41448455976865,
+                -34.63710982419427
+            ]
+        },
+        {
+            "title": "event 4",
+            "description": "super event 4",
+            "owner": "pgomez",
+            "tags": ["test", "event"],
+            "categories": ["example", "event test"],
+            "location": [
+                -58.41379791426084,
+                -34.63709216949762
+            ]
+        },
+        {
+            "title": "event 5",
+            "description": "super event 5",
+            "owner": "jperez",
+            "tags": ["test", "event"],
+            "categories": ["example", "event test"],
+            "location": [
+                -58.41300398039243,
+                -34.63704803273956
+            ]
+        },
+        {
+            "title": "event 6",
+            "description": "super event 6",
+            "owner": "jperez",
+            "tags": ["test", "event"],
+            "categories": ["example", "event test"],
+            "location": [
+                -58.412403165573096,
+                -34.63703920538512
+            ]
+        },
+        {
+            "title": "event 7",
+            "description": "super event 7",
+            "owner": "jperez",
+            "tags": ["test", "event"],
+            "categories": ["example", "event test"],
+            "location": [
+                -58.413443862670874,
+                -34.63749822656981
+            ]
+        },
+        {
+            "title": "event 8",
+            "description": "super event 8",
+            "owner": "jperez",
+            "tags": ["test", "event"],
+            "categories": ["example", "event test"],
+            "location": [
+                -58.41324001478574,
+                -34.63830150753011
+            ]
+        },
+        {
+            "title": "event 9",
+            "description": "super event 9",
+            "owner": "jperez",
+            "tags": ["test", "event"],
+            "categories": ["example", "event test"],
+            "location": [
+                -58.41462403463743,
+                -34.63661549126755
+            ]
+        },
+        {
+            "title": "event 10",
+            "description": "super event 10",
+            "owner": "jperez",
+            "tags": ["test", "event"],
+            "categories": ["example", "event test"],
+            "location": [
+                -58.41407149958036,
+                -34.63627563567136
+            ]
+        },
+        {
+            "title": "event 11",
+            "description": "super event 11",
+            "owner": "jperez",
+            "tags": ["test", "event"],
+            "categories": ["example", "event test"],
+            "location": [
+                -58.41360479521177,
+                -34.63600198469874
+            ]
+        },
+        {
+            "title": "event 12",
+            "description": "super event 12",
+            "owner": "jperez",
+            "tags": ["test", "event"],
+            "categories": ["example", "event test"],
+            "location": [
+                -58.413647710556006,
+                -34.636580181660044
+            ]
+        },
+        {
+            "title": "event 13",
+            "description": "super event 13",
+            "owner": "jperez",
+            "tags": ["test", "event"],
+            "categories": ["example", "event test"],
+            "location": [
+                -58.411952554458594,
+                -34.63607260439101
+            ]
+        },
+        {
+            "title": "event 14",
+            "description": "super event 14",
+            "owner": "jperez",
+            "tags": ["test", "event"],
+            "categories": ["example", "event test"],
+            "location": [
+                -58.41224759745023,
+                -34.63519426769173
+            ]
+        },
+        {
+            "title": "event 15",
+            "description": "super event 15",
+            "owner": "jperez",
+            "tags": ["test", "event"],
+            "categories": ["example", "event test"],
+            "location": [
+                -58.41536432432554,
+                -34.63706127376944
+            ]
         }
     ],
     "users": [
         {"first_name": "pepe", "last_name": "gomez", "username": "pgomez"},
-        {"first_name": "juan", "last_name": "perez", "username": "jperez"}
+        {"first_name": "juan", "last_name": "perez", "username": "jperez"},
+        {"first_name": "agustin", "last_name": "creco", "username": "acroce"},
+        {"first_name": "sergio", "last_name": "orbe", "username": "sergioo"},
+        {"first_name": "federico", "last_name": "gonzalez", "username": "fedeg"},
+        {"first_name": "gabriela", "last_name": "ponce", "username": "gab"}
     ],
     "tags": [
         {"name": "flisol"},
-        {"name": "software libre"}
+        {"name": "software libre"},
+        {"name": "test"},
+        {"name": "event"}
     ],
     "categories": [
         {"name": "linux"},
-        {"name": "cafeconf"}
+        {"name": "cafeconf"},
+        {"name": "event test"},
+        {"name": "example"}
     ]
 }

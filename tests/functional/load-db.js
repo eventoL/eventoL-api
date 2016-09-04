@@ -27,13 +27,16 @@ function load() {
         loadDocs(api.model.models.Category, db.categories),
         loadDocs(api.model.models.User, db.users)
     ]).then((docs) => {
-        db.events[0].tags = docs[0];
-        db.events[1].tags.push(docs[0][1]);
-        db.events[0].categories.push(docs[1][0]);
-        db.events[1].categories.push(docs[1][1]);
-        db.events[0].owner = docs[2][0];
-        db.events[1].owner = docs[2][1];
-        return loadDocs(api.model.models.Event, [db.events]);
+        let tags = docs[0];
+        let categories = docs[1];
+        let users = docs[2];
+        let events = db.events.map((event) => {
+            event.tags = event.tags.map((tagname) => tags.filter((tag) => tag.name === tagname)[0]);
+            event.categories = event.categories.map((catname) => categories.filter((cat) => cat.name === catname)[0]);
+            event.owner = users.filter((user) => user.username === event.owner)[0];
+            return event;
+        });
+        return loadDocs(api.model.models.Event, events);
     });
 }
 
