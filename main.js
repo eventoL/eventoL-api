@@ -3,12 +3,15 @@
 require('dotenv').load();
 const logger = require('./lib/logger');
 const express = require('express');
+const cors = require('cors');
 const Q = require('q');
+
 const api = require('./lib/model/api');
 api.load();
 
 // Create the app and listen for API requests
 let app = express();
+app.use(cors());
 
 app.get('/api/events/search/:text/', (req, res) => {
     let redex = `.*${req.params.text}.*`;
