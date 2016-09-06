@@ -17,7 +17,7 @@ before_install:
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
   - export REPO=fedeg/eventol-mongo-data
   - export IMAGE=fedeg/eventol-api:latest
-  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $(echo "$BRANCH" | tr -dc '[:alnum:]\n\r' | tr '[:upper:]' '[:lower:]') ; fi`
 install:
   - sudo apt-get update
   - sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y docker-engine
