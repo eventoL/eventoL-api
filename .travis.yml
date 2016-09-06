@@ -1,24 +1,48 @@
 language: node_js
-node_js:
-  - 4
-  - 5
-  - 6
-  - node
 services:
-  - mongodb
-before_script:
-  - npm install
-  - npm install -g codeclimate-test-reporter
-  - sleep 15
+  - docker
 env:
   global:
-    - LOGGER_INFO_PATH=/var/log/eventoLInfo.log
-    - LOGGER_ERROR_PATH=/var/log/eventoLError.log
-  matrix:
-    - NODE_ENV=develop
-script: npm test
-after_script:
-  - codeclimate-test-reporter < results/lcov.info
+    - secure: "lzlmT02UJZ/A3oUe5NSHCPoF3qVM9mzEV76ZXewR4heN6Em1HpK6dsImPDgSoUR1ufGnaZDCwpZmgssuEF7JL52QJKF9zOoRNpeK47gzOIXYxCkAAhIJXTGmsvj+An2POE+KBXQRYhKjhiaYmSGedO7sTrtF04q0WN3o/xiYCnVAjCVTiqIt8NmH4uz1wIwPJ8+bk0Zl6HF8VBj+mBCNdenDkPzgFfe2xU8G6GlKDwx/qd2RmHkowSSZy42gjsmxD78wVH8xRuOcryOHZpKdpa6p7Ydf9Ke1wi1Cl5Kz98YxrjaPFnGnqz+JJiTdkGv0+wHR/EEFX28pfX6SKqwmTaKK0kk5vubwRvHJvBnEeHHDn/M1CT3AQg1yblkFoPjEjt+pcUd1UIUm8En3+i3psnkQKYG5TsHefuGVD5K0KFpIpWrlKutfpPzyb+1WCIJ4LWZlLM5j+q6d1TP2mmyDYghyHTk8TSn0lrLTvN5OQY65TPnTpzHN4VscSZ6Q2XULpEVwao6bipqXvUaAfsmkOrYDiNvyKsb8L8HWmKJ9AYN5mwn1f2AabJV6d9x6X68l41X/DUm+Y11A274iZ1AxXVsZ3F+OJ0cO3Jkpghv7SGbAFE3hnYCtrS3NIwApUls862ghRKhsoFpjkQKCbK/6gL/5gD+N753I0ZvK89XuzbM="
+    - secure: "Rh3AT9+DUEovRtZPUXmTrR3g88379+J4dFF0dEY0MHJCXFVZgsMC3bSLGlAceCW40JNuOjeTMogrLiShojXwCABIJPuzIfGRG1XDgTJdi0B2IufDInUB5wNkURZp6ZKSNBoXYqH/+l7VQ7DC9wo1bXdd7845LnE5TjDCBRX/0VW5wcD5OpPmr1PZ/Xt9Dkr9a8bJKMTVdBffxsjT8rlj13v66LkFi1OON1btjAtoiWA2Sok+adByzKjnLNviKaxXQnrNIt5rmEWZS/WEbQF2nIN5IHVsyhwWS5NBdcV79r1ax8MZ6xBVD43lmlRoZrzNaCAY8/oQJXMWwLeR76Yw50p4cOA2OdNWWNnm2HKZJn0rtXhEbnMO/W+CosKYeIgCSTtoKtbGDrGaDbHccOGFVWPQjoIC0zY/oVE/CI727h0NUFoH70vBdnHY28JED0IhQ6DUCHfTEm+0Mjxurj4iiKfCrL2rLp25ENJEjdHwmnwj72WBWQ8LaPDGCFXVNaHRoTa2E/ea2bFCKyboOWdJsByVISnzaHYIAAbmitTKBrD7b/GyV6XYKOlMYZ0YfMybyOOF9NFXQwuiCV/1Sz4q2jz030YzG51xP2MyUEt/kdXLKo/tAiWrE+IR4PtAcyYGKB0Pao27iIuCbYyM2bZVnyAOtCBBR5t903k8xNht+iw="    - LOGGER_INFO_PATH=/var/log/eventoLInfo.log
+    - secure: "olVIvo8MBTbCM556qzz5oNy4sYabDoRFyGotatCqRJxbGT6CivvRjI7I0TQL1GGavrYw+eB9jjqiEdV/eNZF+xl6lt6jTCKYMT2ErAaoD6bcBPkcn9Q02Qf9I61AJl/pBQr7CGC1ZLdwyngO6iQ1UYgkwhopk/ZYlHF3HrDqYwMDj+CNIfjb5cJCrRpd4rPGfAL5kxlwjz9k1r6J8Kxucr+i+4DZi8qXK33S7BngeTcR143HvAUwVvimVPe5aD+/gdrIqWZz+fbUvXjtrj7m8ZDmg08tOWdh0rcFviEO3KiirvmUA84NSefKYB8Cut8GVraLg5UmdBKBG2U14QqW5d3CPJxnnuZKtEKqvvRaS8wvdHXwUaGITYsWyR2CUv6QnlK18P0wKQIBJL9ZZk1cUfOrPIVkoSBpiXu73Zo31BdYiBlcKr+B7+w4XQK3mUrv43RYnxRMFPUdq+5EWcU+IbdTEm7G0seiHH28lQfqW6BTS8sroVXGpSyf35CZCXT6WHP9MfCeUE5VzXWACjr8YFIPwmKNiVwB4ODzoVmMlDPqFFHKv6xrhHNcrZsqwwF3kFJKatoDNPfGBgcXT8kGAmxO263W2POOq4bHRhz+c+rpe0HEQO/3yGLUjkxkSeBUco++ae0UcYgbJksyM4pP4m1uHxVPh03c/TJIk4sGk4Y="
+    - COMMIT=${TRAVIS_COMMIT::8}
+    - DOCKER_COMPOSE_VERSION: 1.8.0
 addons:
   code_climate:
     repo_token: 2d2a553e2257b5c9c86fc927b3e413c3ebc5277ce833933e61b62642b3925f59
+before_install:
+  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+  - export REPO=fedeg/eventol-mongo-data
+  - export IMAGE=fedeg/eventol-api:latest
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
+install:
+  - sudo apt-get update
+  - sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y docker-engine
+  - docker-compose --version
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+  - docker-compose --version
+before_script:
+  - docker-compose -f docker-compose-test.yml pull
+  - docker-compose -f docker-compose-test.yml build
+  - npm install
+  - npm install -g codeclimate-test-reporter
+script:
+  - docker-compose -f docker-compose-test.yml up -d
+  - docker-compose -f docker-compose-test.yml ps
+  - sleep 15
+  - timeout 60 node examples.js
+  - npm test
+after_script:
+  - codeclimate-test-reporter < results/lcov.info
+before_deploy:
+  - docker commit eventolapi_mongo-data_1 $REPO:$COMMIT
+  - docker tag $REPO:$COMMIT $REPO:$TAG
+  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
+deploy:
+  - docker push $REPO:$COMMIT
+  - docker push $REPO:$TAG
+  - docker push $REPO:travis-$TRAVIS_BUILD_NUMBER

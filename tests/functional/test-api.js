@@ -13,14 +13,6 @@ function testRequest(url) {
 describe('Api', () => {
     let apiUrl = process.env.API_URL;
 
-    before( function() {
-        this.timeout(5000);
-        //load example to db
-        let db = require('./load-db');
-        let main = require('../../main');
-        return db.load();
-    });
-
     beforeEach(() => {});
 
     describe('baucis get elements', () => {
