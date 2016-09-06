@@ -28,13 +28,13 @@ install:
   - sudo mv docker-compose /usr/local/bin
   - docker-compose --version
 before_script:
-  - docker-compose -f docker-compose-test.yml pull
-  - docker-compose -f docker-compose-test.yml build
+  - docker-compose -f docker-compose-testing.yml pull
+  - docker-compose -f docker-compose-testing.yml build
   - npm install
   - npm install -g codeclimate-test-reporter
 script:
-  - docker-compose -f docker-compose-test.yml up -d
-  - docker-compose -f docker-compose-test.yml ps
+  - docker-compose -f docker-compose-testing.yml up -d
+  - docker-compose -f docker-compose-testing.yml ps
   - sleep 15
   - timeout 60 node examples.js || true
   - npm test
