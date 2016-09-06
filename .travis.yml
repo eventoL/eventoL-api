@@ -38,11 +38,10 @@ script:
   - npm test
 after_script:
   - codeclimate-test-reporter < results/lcov.info
-before_deploy:
+after_success:
   - docker commit eventolapi_mongo-data_1 $REPO:$COMMIT
   - docker tag $REPO:$COMMIT $REPO:$TAG
   - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
-deploy:
   - docker push $REPO:$COMMIT
   - docker push $REPO:$TAG
   - docker push $REPO:travis-$TRAVIS_BUILD_NUMBER
