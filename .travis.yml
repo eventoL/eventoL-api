@@ -41,7 +41,8 @@ script:
 after_script:
   - codeclimate-test-reporter < results/lcov.info
 after_success:
-  - docker commit eventolapi_mongo-data_1 $REPO:$COMMIT
+  - docker pull docker-autobuild-data-container:latest
+  - docker run --rm -v /var/lib/docker:/var/lib/docker -v /var/run/docker.sock:/var/run/docker.sock -e CONTAINER=eventolapi_mongo-data_1 -e IMAGE=$REPO:$COMMIT docker-autobuild-data-container:latest
   - docker tag $REPO:$COMMIT $REPO:$TAG
   - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
   - docker push $REPO:$TAG
