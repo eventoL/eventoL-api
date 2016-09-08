@@ -44,6 +44,7 @@ after_success:
   - docker pull fedeg/docker-autobuild-data-container:latest
   - docker run --rm -v /var/lib/docker:/var/lib/docker -v /var/run/docker.sock:/var/run/docker.sock -e CONTAINER=eventolapi_mongo-data_1 -e IMAGE=$REPO fedeg/docker-autobuild-data-container:latest
   - docker images
+  - echo "Repo: $REPO, Commit: $COMMIT, Tag: $TAG, Travis build number: $TRAVIS_BUILD_NUMBER"
   - docker tag $REPO $REPO:$COMMIT
   - docker tag $REPO:$COMMIT $REPO:$TAG
   - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
